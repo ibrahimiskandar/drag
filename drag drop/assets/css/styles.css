@@ -1,0 +1,26 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.dropElm {
+  width: 70%;
+  height: 350px;
+  background-color: #aaa;
+  margin: 50px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.dropElm input {
+  display: none;
+}
+
+.fa-arrow-up-from-bracket {
+  font-size: 50px;
+  color: white;
+}
