@@ -10,6 +10,12 @@ input.onchange = function (ev) {
   ev.target.value = "";
 };
 
+
+function remove(o) {
+  p=o.parentNode.parentNode;
+        p.parentNode.removeChild(p);
+        counter--;
+  }
 dropElm.ondragover = (ev) => ev.preventDefault();
 let counter = 1;
 
@@ -23,14 +29,14 @@ function uploadImage(files) {
     let reader = new FileReader();
     reader.onloadend = function (ev) {
       let tr = `
-            <tr>
+            <tr class="roww">
               <th scope="row">${counter++}</th>
               <td >
                      <img src="${ev.target.result}" alt="image" width="200px">
               </td>
               <td >${file.name}</td>
               <td >${file.size}</td>
-          <td><button class="remove" >Remove</button></td>
+          <td><button onclick="remove(this)"  class="remove" >Remove</button></td>
             </tr>`;
 
       if (counter == 2) {
@@ -45,8 +51,12 @@ function uploadImage(files) {
             </tr>
           </thead>`;
         table.innerHTML += tablee;
+        
       }
       table.lastElementChild.innerHTML += tr;
+
+      
+
 
       let removeAll = document.querySelector("table .removeall");
       removeAll.onclick = function () {
@@ -62,3 +72,4 @@ function uploadImage(files) {
 dropElm.ondrop = function (ev) {
   uploadImage(ev.dataTransfer.files);
 };
+
